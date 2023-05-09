@@ -1,4 +1,5 @@
 var http = require('http'); 
+var RateLimit = require('express-rate-limit')
 
 const express = require('express') 
 const app = express()
@@ -8,6 +9,15 @@ const db = require("./db");
 
 var cookieParser = require('cookie-parser'); 
 const bodyParser = require('body-parser');
+
+var limiter = new RateLimit({
+    windowMs: 15*60*1000, // 15 minutes 
+    max: 50, // 50 requests por windowMs 
+    delayMs: 0, // remove delay entre as requisições
+    message: "Ops! Você atingiu o limite de requisição pertimido"
+});
+
+app.use(limiter);
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
