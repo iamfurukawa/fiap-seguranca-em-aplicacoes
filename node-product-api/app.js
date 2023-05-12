@@ -1,4 +1,5 @@
-var http = require('http'); 
+var http = require('http');
+const fs = require('fs'); 
 
 const express = require('express') 
 const app = express()
@@ -12,6 +13,24 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
 app.use(cookieParser()); 
+
+
+//Implementando HTTPS
+
+var https = require('https');
+var key  = fs.readFileSync('./node-product-api/sslcert/mySecret.key', 'utf8');
+var certificate = fs.readFileSync('./node-product-api/sslcert/test.crt', 'utf8');
+
+var credentials = {key: key, cert: certificate};
+
+var httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(port);
+
+app.get('/', async (req, res, next)  => {
+    res.send('Hello World!')
+  });
+
 
 app.get('/products', async (req, res, next) => { 
     var resp = await db.getAllProducts();
@@ -77,9 +96,4 @@ app.delete('/products/:id', async (req, res, next) => {
     }catch(err){
         return res.status(err.code).json(err);
     }
-});
-
-
-app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`)
 });
