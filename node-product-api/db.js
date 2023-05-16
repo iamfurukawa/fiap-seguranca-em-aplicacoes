@@ -32,49 +32,55 @@ async function getAllProducts(){
 async function getProductById(id){
     const conn = await connect();
     
-    const query = `SELECT * FROM products WHERE id = "${id}";`;
+    const query = `SELECT * FROM products WHERE id = ?`;
     console.log(`Executando query: ${query}`);
     
-    const [rows, fields] = await connection.execute(query);
+    try {
+        const [rows, fields] = await connection.execute(query, [id]);
+        return rows;
+    } catch(error) {
+        throw {code: 500, message: 'Erro inesperado ao tentar consultar um produto'};
+    }
 
-    return rows;
 }
 
 
 async function updateProductById(id, name, description, value){
     try{
         const conn = await connect();
-    
-        const query = `UPDATE products SET name = "${name}", description = "${description}", value = ${value} WHERE id = "${id}";`;
+        const query = `UPDATE products SET name = ?, description = ?, value = ? WHERE id = ?;`;
+        const values = [name, description, value, id];
         console.log(`Executando query: ${query}`);
         
-        const [rows] = await conn.execute(query);
+        const [rows] = await conn.execute(query, values);
         return rows;
-    }catch(err){
-        throw {code: 500, message: 'Erro inesperado ao tentar cadastrar usuário'};
+    } catch(err){
+        throw {code: 500, message: 'Erro inesperado ao tentar cadastrar produto'};
     }
 }
 
 async function deleteProductById(id){
     const conn = await connect();
     
-    const query = `DELETE FROM products WHERE id = "${id}";`;
+    const query = `DELETE FROM products WHERE id = ?;`;
+    const values = [id];
     console.log(`Executando query: ${query}`);
 
-    await connection.execute(query);
+    await connection.execute(query, values);
 }
 
 async function insertProduct(name, description, value){
     const conn = await connect();
 
-    const query = `INSERT INTO products(id, name, description, value) VALUES ("${randomUUID()}", "${name}", "${description}", ${value});`;
+    const query = `INSERT INTO products(id, name, description, value) VALUES (?, ?, ?, ?);`;
+    const values = [randomUUID(), name, description, value];
     console.log(`Executando query: ${query}`);
 
     try{
-        await connection.execute(query);
-    }catch(err){
+        await connection.execute(query, values);
+    } catch(err){
         if(err.errno === 1062){
-            throw {code: 400, message: 'Já existe um producte cadastrado com este usuário!'};
+            throw {code: 400, message: 'Já existe um produto cadastrado com este usuário!'};
         }else{
             throw {code: 500, message: 'Erro inesperado ao tentar cadastrar usuário'};
         }
