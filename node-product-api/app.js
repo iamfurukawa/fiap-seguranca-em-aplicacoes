@@ -1,5 +1,6 @@
-var http = require('http'); 
+var https = require('https');
 var RateLimit = require('express-rate-limit')
+const fs = require('fs');
 
 const express = require('express') 
 const { auth } = require('express-oauth2-jwt-bearer')
@@ -37,6 +38,16 @@ app.use(limiter);
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
 app.use(cookieParser()); 
+
+//Implementando HTTPS
+var key  = fs.readFileSync('./sslcert/mySecret.key', 'utf8');
+var certificate = fs.readFileSync('./sslcert/myCert.crt', 'utf8');
+
+var credentials = {key: key, cert: certificate};
+
+var httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(port);
 
 app.get('/products', checkJwt,  async (req, res, next) => { 
     var resp = await db.getAllProducts();
@@ -102,9 +113,4 @@ app.delete('/products/:id', checkJwt, async (req, res, next) => {
     }catch(err){
         return res.status(err.code).json(err);
     }
-});
-
-
-app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`)
 });

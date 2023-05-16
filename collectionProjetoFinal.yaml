@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2023-05-09T23:06:55.870Z
+__export_date: 2023-05-16T23:23:59.220Z
 __export_source: insomnia.desktop.app:v2023.1.0
 resources:
   - _id: req_0a47f094d74c4afba3b2f9604db12843
@@ -49,9 +49,9 @@ resources:
     _type: workspace
   - _id: req_0e4a1f9532f64cf297998b229b97c5de
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1683673375649
+    modified: 1684277596283
     created: 1682038001948
-    url: http://localhost:3001/products
+    url: https://localhost:3001/products
     name: products
     description: ""
     method: GET
@@ -76,9 +76,9 @@ resources:
     _type: request
   - _id: req_03c7393aa27c4234af73af31b2e4dbc0
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1683673148055
+    modified: 1684279214473
     created: 1682038001947
-    url: http://localhost:3001/products/1cf641f0-19a1-4699-94f6-5cc45c061ca8
+    url: https://localhost:3001/products/1cf641f0-19a1-4699-94f6-5cc45c061ca8
     name: products/:id
     description: ""
     method: GET
@@ -103,9 +103,9 @@ resources:
     _type: request
   - _id: req_25d34aeeef334ad99258fc8f8f524ba1
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1683673150631
+    modified: 1684279216528
     created: 1682038001945
-    url: http://localhost:3001/products
+    url: https://localhost:3001/products
     name: products
     description: ""
     method: POST
@@ -139,9 +139,9 @@ resources:
     _type: request
   - _id: req_cc9c4527923e4af8be7aa903a865c185
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1683673153797
+    modified: 1684279218751
     created: 1682038001944
-    url: http://localhost:3001/products/acfda577-c36e-465d-9984-2ad98b7f642c
+    url: https://localhost:3001/products/acfda577-c36e-465d-9984-2ad98b7f642c
     name: products/:id
     description: ""
     method: PUT
@@ -175,9 +175,9 @@ resources:
     _type: request
   - _id: req_06cae0fe50f9421eb49d96615e6feddb
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1683673159016
+    modified: 1684279220894
     created: 1682038001940
-    url: http://localhost:3001/products/acfda577-c36e-465d-9984-2ad98b7f642c
+    url: https://localhost:3001/products/acfda577-c36e-465d-9984-2ad98b7f642c
     name: products/:id
     description: ""
     method: DELETE
