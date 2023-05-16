@@ -14,23 +14,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser()); 
 
-
 //Implementando HTTPS
-
 var https = require('https');
-var key  = fs.readFileSync('./node-product-api/sslcert/mySecret.key', 'utf8');
-var certificate = fs.readFileSync('./node-product-api/sslcert/test.crt', 'utf8');
+var key  = fs.readFileSync('./sslcert/mySecret.key', 'utf8');
+var certificate = fs.readFileSync('./sslcert/myCert.crt', 'utf8');
 
 var credentials = {key: key, cert: certificate};
 
 var httpsServer = https.createServer(credentials, app);
 
 httpsServer.listen(port);
-
-app.get('/', async (req, res, next)  => {
-    res.send('Hello World!')
-  });
-
 
 app.get('/products', async (req, res, next) => { 
     var resp = await db.getAllProducts();

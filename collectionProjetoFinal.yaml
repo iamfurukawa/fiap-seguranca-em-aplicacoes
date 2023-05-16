@@ -1,30 +1,35 @@
 _type: export
 __export_format: 4
-__export_date: 2023-04-21T00:53:12.012Z
+__export_date: 2023-05-16T23:21:10.889Z
 __export_source: insomnia.desktop.app:v2023.1.0
 resources:
   - _id: req_0a47f094d74c4afba3b2f9604db12843
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1682038332247
+    modified: 1683672898008
     created: 1682038016493
-    url: https://suaURL.us.auth0.com/oauth/token
+    url: https://dev-8j40l6nfo8t4afgh.us.auth0.com/oauth/token
     name: Generate token
     description: ""
     method: POST
     body:
       mimeType: application/json
-      text: |-
+      text: >-
         {
-        	"client_id": "seuClientId",
-        	"client_secret": "seuSecret",
-        	"audience": "http://localhost:4200",
+        	"client_id": "tSAtuXb3wHCso2FSNysuCXj6oWnB1E6V",
+        	"client_secret": "zQSeoKUsMlRHeCfmvCnUGqaXaMPz_SXGILwyrCQ2_PeQJGv8qhLnBlKO7hRWrRrT",
+        	"audience": "http://localhost:3001",
         	"grant_type": "client_credentials"
         }
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
-    authentication: {}
+    authentication:
+      type: oauth2
+      grantType: client_credentials
+      accessTokenUrl: https://dev-8j40l6nfo8t4afgh.us.auth0.com/oauth/token
+      clientId: tSAtuXb3wHCso2FSNysuCXj6oWnB1E6V
+      clientSecret: zQSeoKUsMlRHeCfmvCnUGqaXaMPz_SXGILwyrCQ2_PeQJGv8qhLnBlKO7hRWrRrT
     metaSortKey: -1682038001900
     isPrivate: false
     settingStoreCookies: true
@@ -44,16 +49,22 @@ resources:
     _type: workspace
   - _id: req_0e4a1f9532f64cf297998b229b97c5de
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1682038342635
+    modified: 1684277596283
     created: 1682038001948
-    url: http://localhost:3001/products
+    url: https://localhost:3001/products
     name: products
     description: ""
     method: GET
     body: {}
     parameters: []
     headers: []
-    authentication: {}
+    authentication:
+      type: oauth2
+      grantType: client_credentials
+      accessTokenUrl: https://dev-8j40l6nfo8t4afgh.us.auth0.com/oauth/token
+      clientId: tSAtuXb3wHCso2FSNysuCXj6oWnB1E6V
+      clientSecret: zQSeoKUsMlRHeCfmvCnUGqaXaMPz_SXGILwyrCQ2_PeQJGv8qhLnBlKO7hRWrRrT
+      audience: http://localhost:3001
     metaSortKey: -1682038001896.875
     isPrivate: false
     settingStoreCookies: true
@@ -65,16 +76,22 @@ resources:
     _type: request
   - _id: req_03c7393aa27c4234af73af31b2e4dbc0
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1682038341718
+    modified: 1684279214473
     created: 1682038001947
-    url: http://localhost:3001/products/1cf641f0-19a1-4699-94f6-5cc45c061ca8
+    url: https://localhost:3001/products/1cf641f0-19a1-4699-94f6-5cc45c061ca8
     name: products/:id
     description: ""
     method: GET
     body: {}
     parameters: []
     headers: []
-    authentication: {}
+    authentication:
+      type: oauth2
+      grantType: client_credentials
+      clientSecret: zQSeoKUsMlRHeCfmvCnUGqaXaMPz_SXGILwyrCQ2_PeQJGv8qhLnBlKO7hRWrRrT
+      accessTokenUrl: https://dev-8j40l6nfo8t4afgh.us.auth0.com/oauth/token
+      clientId: tSAtuXb3wHCso2FSNysuCXj6oWnB1E6V
+      audience: http://localhost:3001
     metaSortKey: -1682038001893.75
     isPrivate: false
     settingStoreCookies: true
@@ -86,9 +103,9 @@ resources:
     _type: request
   - _id: req_25d34aeeef334ad99258fc8f8f524ba1
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1682038340336
+    modified: 1684279216528
     created: 1682038001945
-    url: http://localhost:3001/products
+    url: https://localhost:3001/products
     name: products
     description: ""
     method: POST
@@ -104,7 +121,13 @@ resources:
     headers:
       - name: Content-Type
         value: application/json
-    authentication: {}
+    authentication:
+      type: oauth2
+      grantType: client_credentials
+      clientSecret: zQSeoKUsMlRHeCfmvCnUGqaXaMPz_SXGILwyrCQ2_PeQJGv8qhLnBlKO7hRWrRrT
+      accessTokenUrl: https://dev-8j40l6nfo8t4afgh.us.auth0.com/oauth/token
+      clientId: tSAtuXb3wHCso2FSNysuCXj6oWnB1E6V
+      audience: http://localhost:3001
     metaSortKey: -1682038001887.5
     isPrivate: false
     settingStoreCookies: true
@@ -116,9 +139,9 @@ resources:
     _type: request
   - _id: req_cc9c4527923e4af8be7aa903a865c185
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1682038338275
+    modified: 1684279218751
     created: 1682038001944
-    url: http://localhost:3001/products/acfda577-c36e-465d-9984-2ad98b7f642c
+    url: https://localhost:3001/products/acfda577-c36e-465d-9984-2ad98b7f642c
     name: products/:id
     description: ""
     method: PUT
@@ -134,7 +157,13 @@ resources:
     headers:
       - name: Content-Type
         value: application/json
-    authentication: {}
+    authentication:
+      type: oauth2
+      grantType: client_credentials
+      clientSecret: zQSeoKUsMlRHeCfmvCnUGqaXaMPz_SXGILwyrCQ2_PeQJGv8qhLnBlKO7hRWrRrT
+      accessTokenUrl: https://dev-8j40l6nfo8t4afgh.us.auth0.com/oauth/token
+      clientId: tSAtuXb3wHCso2FSNysuCXj6oWnB1E6V
+      audience: http://localhost:3001
     metaSortKey: -1682038001875
     isPrivate: false
     settingStoreCookies: true
@@ -146,16 +175,22 @@ resources:
     _type: request
   - _id: req_06cae0fe50f9421eb49d96615e6feddb
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1682038336364
+    modified: 1684279220894
     created: 1682038001940
-    url: http://localhost:3001/products/acfda577-c36e-465d-9984-2ad98b7f642c
+    url: https://localhost:3001/products/acfda577-c36e-465d-9984-2ad98b7f642c
     name: products/:id
     description: ""
     method: DELETE
     body: {}
     parameters: []
     headers: []
-    authentication: {}
+    authentication:
+      type: oauth2
+      grantType: client_credentials
+      clientSecret: zQSeoKUsMlRHeCfmvCnUGqaXaMPz_SXGILwyrCQ2_PeQJGv8qhLnBlKO7hRWrRrT
+      accessTokenUrl: https://dev-8j40l6nfo8t4afgh.us.auth0.com/oauth/token
+      clientId: tSAtuXb3wHCso2FSNysuCXj6oWnB1E6V
+      audience: http://localhost:3001
     metaSortKey: -1682038001850
     isPrivate: false
     settingStoreCookies: true
@@ -178,7 +213,7 @@ resources:
     _type: environment
   - _id: jar_12d333a03b25cab26ea1827c347687994e63d99b
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
-    modified: 1682038068645
+    modified: 1683671237980
     created: 1682038006255
     name: Default Jar
     cookies:
@@ -195,7 +230,7 @@ resources:
         hostOnly: true
         creation: 2023-04-21T00:47:48.644Z
         lastAccessed: 2023-04-21T00:47:48.644Z
-        id: "20869885536060684"
+        id: "06311366258685225"
       - key: did_compat
         value: s%3Av0%3A23367a60-dfde-11ed-818f-b39b17c9f198.40sAdnWsT%2BU9GQucayj9ft0sGUNEvjSN62wYY78TwBU
         expires: 2024-04-20T06:47:48.000Z
@@ -207,7 +242,55 @@ resources:
         hostOnly: true
         creation: 2023-04-21T00:47:48.645Z
         lastAccessed: 2023-04-21T00:47:48.645Z
-        id: "7781935586894253"
+        id: "7999993355432287"
+      - key: did
+        value: s%3Av0%3A9d2404d0-eeb8-11ed-9bc1-c1fed1ae9d1b.%2FNKjANR4Ax3J%2Bfn%2FHjjFw5LZ7FLNlbWCal3a6DyzTE8
+        domain: suaurl.us.auth0.com
+        path: /
+        secure: true
+        httpOnly: true
+        extensions:
+          - SameSite=None
+        hostOnly: true
+        creation: 2023-05-09T22:26:59.487Z
+        lastAccessed: 2023-05-09T22:26:59.487Z
+        id: "6873143255203085"
+      - key: did_compat
+        value: s%3Av0%3A9d2404d0-eeb8-11ed-9bc1-c1fed1ae9d1b.%2FNKjANR4Ax3J%2Bfn%2FHjjFw5LZ7FLNlbWCal3a6DyzTE8
+        domain: suaurl.us.auth0.com
+        path: /
+        secure: true
+        httpOnly: true
+        hostOnly: true
+        creation: 2023-05-09T22:26:59.487Z
+        lastAccessed: 2023-05-09T22:26:59.487Z
+        id: "13461318671970757"
+      - key: did
+        value: s%3Av0%3Aa82825f0-eeb8-11ed-ba11-9b4d62ac36db.pL%2BYEU87ueAmnDr1ClbX3hDbwnAQMFxc4j%2Fjmvq%2Bcvo
+        expires: 2024-05-09T04:27:18.000Z
+        maxAge: 31557600
+        domain: dev-8j40l6nfo8t4afgh.us.auth0.com
+        path: /
+        secure: true
+        httpOnly: true
+        extensions:
+          - SameSite=None
+        hostOnly: true
+        creation: 2023-05-09T22:27:17.979Z
+        lastAccessed: 2023-05-09T22:27:17.979Z
+        id: "32188902789995"
+      - key: did_compat
+        value: s%3Av0%3Aa82825f0-eeb8-11ed-ba11-9b4d62ac36db.pL%2BYEU87ueAmnDr1ClbX3hDbwnAQMFxc4j%2Fjmvq%2Bcvo
+        expires: 2024-05-09T04:27:18.000Z
+        maxAge: 31557600
+        domain: dev-8j40l6nfo8t4afgh.us.auth0.com
+        path: /
+        secure: true
+        httpOnly: true
+        hostOnly: true
+        creation: 2023-05-09T22:27:17.980Z
+        lastAccessed: 2023-05-09T22:27:17.980Z
+        id: "40484131486076813"
     _type: cookie_jar
   - _id: spc_8eb268322f7747659f9c7ba31aef145e
     parentId: wrk_d715d89196a04ac4b79a4a17113ffc11
