@@ -1,4 +1,5 @@
 var http = require('http'); 
+var RateLimit = require('express-rate-limit')
 
 const express = require('express') 
 const { auth } = require('express-oauth2-jwt-bearer')
@@ -17,6 +18,13 @@ const checkJwt = auth({
 
 });
 
+var limiter = new RateLimit({
+    windowMs: 15*60*1000, // 15 minutes 
+    max: 50, // 50 requests por windowMs 
+    delayMs: 0, // remove delay entre as requisições
+    message: "Ops! Você atingiu o limite de requisição pertimido"
+});
+
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -25,6 +33,7 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(limiter);
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
 app.use(cookieParser()); 
