@@ -24,7 +24,7 @@ async function getAllProducts(){
     const query = `SELECT * FROM products LIMIT 1000;`;
     console.log(`Executando query: ${query}`);
 
-    const [rows, fields] = await connection.execute(query);
+    const [rows, fields] = await conn.execute(query);
     console.log(`Rows: ${JSON.stringify(rows)}`);
     return rows;
 }
@@ -36,7 +36,7 @@ async function getProductById(id){
     console.log(`Executando query: ${query}`);
     
     try {
-        const [rows, fields] = await connection.execute(query, [id]);
+        const [rows, fields] = await conn.execute(query, [id]);
         return rows;
     } catch(error) {
         throw {code: 500, message: 'Erro inesperado ao tentar consultar um produto'};
@@ -66,7 +66,7 @@ async function deleteProductById(id){
     const values = [id];
     console.log(`Executando query: ${query}`);
 
-    await connection.execute(query, values);
+    await conn.execute(query, values);
 }
 
 async function insertProduct(name, description, value){
@@ -77,7 +77,7 @@ async function insertProduct(name, description, value){
     console.log(`Executando query: ${query}`);
 
     try{
-        await connection.execute(query, values);
+        await conn.execute(query, values);
     } catch(err){
         if(err.errno === 1062){
             throw {code: 400, message: 'Já existe um produto cadastrado com este usuário!'};
